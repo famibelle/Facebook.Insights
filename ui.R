@@ -1,12 +1,18 @@
+source("chooser.R")
+library(dygraphs)
+
 shinyUI(
     fluidPage(
         titlePanel("Service d'analyse des Insights des Posts Facebook (beta)"),
+        
         verticalLayout(
             mainPanel(
                 tabsetPanel(
                     tabPanel("Graphique à Bulles", htmlOutput("grafics")),
-                    tabPanel("Insights", htmlOutput("contents")),
                     tabPanel("Analyse dynamique des posts", htmlOutput("motion")),
+                    tabPanel("Analyse des statistiques des vidéos", dygraphOutput("dygraph")),
+                    tabPanel("Insights", htmlOutput("contents")),
+                    tabPanel("More detailled insights", renderDygraph("selection")),
                     tabPanel("Readme", htmlOutput("readme"))
                 )
             ),
@@ -16,16 +22,14 @@ shinyUI(
                               'text/csv',
                               'text/comma-separated-values',
                               'text/tab-separated-values',
-                              'text/plain',
-                              '.csv',
-                              '.tsv',
-                              '.xlsx'
+                              '.xlsx',
+                              '.xls'
                           )
                 )
-        #         numericInput('sheetIndex', 'SheetIndex', 1)
-                
-                )
-            
-        )
+#                 chooserInput("mychooser", "Available frobs", "Selected frobs",
+#                              names(facebook.insight)[8:33], c(), size = 10, multiple = TRUE
+#                 )
+            )
+        )   
     )
 )
