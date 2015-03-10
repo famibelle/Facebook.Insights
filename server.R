@@ -39,10 +39,13 @@ shinyServer(function(input, output) {
         )
             
     colnames(facebook.insight) <- colnames(facebook.insight.colTitle)
+<<<<<<< HEAD
     
     # erase uploaded file once all the data have been uploaded
     unlink(inFile$datapath)
     
+=======
+>>>>>>> ce7cf436e4817c68bf64f6c842b269fa3f364ae6
     return(facebook.insight)
     })
 
@@ -137,9 +140,14 @@ output$dygraph <- renderDygraph({
         dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
         dySeries(name = "Lifetime.Organic.Video.Views",   label = "Lifetime Organic Video Views") %>%
         dySeries(name = "Lifetime.Paid.Video.Views",      label = "Paid Video Views") %>%
+<<<<<<< HEAD
         dyLegend(show = "always", hideOnMouseOut = TRUE) %>%
         dyRangeSelector(keepMouseZoom = TRUE) %>%
         dyOptions(animatedZooms = TRUE, labelsKMB = TRUE, logscale = TRUE)
+=======
+        dyOptions(animatedZooms = TRUE, labelsKMB = TRUE) %>%
+        dyRangeSelector(keepMouseZoom = TRUE)
+>>>>>>> ce7cf436e4817c68bf64f6c842b269fa3f364ae6
 })
 
 
@@ -149,18 +157,24 @@ output$dygraph <- renderDygraph({
                      detail = 'Patience...', value = 0, {
                          Facebook_OFR_Post <- reactive_Facebook()
                      })
+<<<<<<< HEAD
 
         Facebook_OFR_Post$Tx.d.engagement_Total         <- Facebook_OFR_Post$Lifetime.Engaged.Users / Facebook_OFR_Post$Lifetime.Post.Total.Reach
         Facebook_OFR_Post$Tx.d.engagement_Orga          <- Facebook_OFR_Post$Lifetime.Engaged.Users / Facebook_OFR_Post$Lifetime.Post.organic.reach
         Facebook_OFR_Post$Post.Message                  <- paste(substring(Facebook_OFR_Post$Post.Message, first = 1, last = 30), "...")
         Facebook_OFR_Post$Lifetime.Post.Total.Reach.log <- log(Facebook_OFR_Post$Lifetime.Post.Total.Reach)
+=======
+>>>>>>> ce7cf436e4817c68bf64f6c842b269fa3f364ae6
 
         Facebook_OFR_Post[Facebook_OFR_Post$Lifetime.Post.Paid.Reach != 0, "Paid"] <- paste(Facebook_OFR_Post[Facebook_OFR_Post$Lifetime.Post.Paid.Reach != 0,"Type"], "Paid")
         Facebook_OFR_Post[is.na(Facebook_OFR_Post$Paid), "Paid"] <- as.character(Facebook_OFR_Post[is.na(Facebook_OFR_Post$Paid), "Type"])
         Facebook_OFR_Post$Type <- as.factor(Facebook_OFR_Post$Paid)
 
+<<<<<<< HEAD
         Facebook_OFR_Post <- Facebook_OFR_Post[order(Facebook_OFR_Post$Type),]
         
+=======
+>>>>>>> ce7cf436e4817c68bf64f6c842b269fa3f364ae6
         titre = paste("Performance des posts facebook: du", 
                       format(min(Facebook_OFR_Post$Posted), format="%d %B %Y"),
                       "au",

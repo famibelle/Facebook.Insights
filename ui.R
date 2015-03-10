@@ -1,6 +1,9 @@
 source("chooser.R")
 library(dygraphs)
+<<<<<<< HEAD
 library(shinydashboard)
+=======
+>>>>>>> ce7cf436e4817c68bf64f6c842b269fa3f364ae6
 
 shinyUI(
     fluidPage(
@@ -13,7 +16,11 @@ shinyUI(
                     tabPanel("Analyse dynamique des posts", htmlOutput("motion")),
                     tabPanel("Analyse des statistiques des vidéos", dygraphOutput("dygraph")),
                     tabPanel("Insights", htmlOutput("contents")),
+<<<<<<< HEAD
 #                     tabPanel("More detailled insights", renderDygraph("selection")),
+=======
+                    tabPanel("More detailled insights", renderDygraph("selection")),
+>>>>>>> ce7cf436e4817c68bf64f6c842b269fa3f364ae6
                     tabPanel("Readme", htmlOutput("readme"))
                 )
             ),
